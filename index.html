@@ -84,6 +84,24 @@
       display: block;
     }
 
+    h2 {
+      margin: 26px 0 10px;
+      font-size: 26px;     /* 제목 크기 키움 */
+      text-align: center;  /* 제목 중앙정렬 */
+    }
+  
+    section p {
+      text-align: center;  /* 본문 중앙정렬 */
+      font-size: 18px;     /* 본문 크기 확대 */
+      line-height: 1.8;
+    }
+  
+    /* Abstract & Overview만 따로 조정하고 싶을 때 */
+    #abstract p, #overall-architecture p {
+      font-size: 18px;
+      text-align: center;
+    }
+
     pre{background:#0f172a;color:#e5e7eb;padding:14px;border-radius:10px;overflow:auto}
     footer{color:var(--muted);font-size:14px;margin:28px 0 8px}
     .btns{display:flex;flex-wrap:wrap;gap:10px}
