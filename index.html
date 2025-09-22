@@ -84,6 +84,39 @@
       display: block;
     }
 
+    /* Table 스타일 */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 16px 0;
+      text-align: center;
+    }
+    .styled-table thead {
+      background-color: #f5f7fb;
+      font-weight: 600;
+    }
+    .styled-table th,
+    .styled-table td {
+      border: 1px solid #ddd;
+      padding: 8px 10px;
+    }
+    .styled-table tbody tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+    .styled-table tbody tr:hover {
+      background-color: #f0f4ff;
+    }
+    .styled-table .highlight {
+      background-color: #f3f3f3; /* Baseline/Ours 강조 */
+    }
+    .caption {
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      margin-top: 6px;
+    }
+
     pre{background:#0f172a;color:#e5e7eb;padding:14px;border-radius:10px;overflow:auto}
     footer{color:var(--muted);font-size:14px;margin:28px 0 8px}
     .btns{display:flex;flex-wrap:wrap;gap:10px}
@@ -128,6 +161,7 @@
         The goal of multi-task learning is to learn to conduct multiple tasks simultaneously based on a shared data representation. While this approach can improve learning efficiency, it may also cause performance degradation due to task conflicts that arise when optimizing the model for different objectives.
         To address this challenge, we introduce MAESTRO, a structured framework designed to generate task-specific features and mitigate feature interference in multi-task 3D perception, including 3D object detection, bird's-eye view (BEV) map segmentation, and 3D occupancy prediction.
         MAESTRO comprises three components: the Class-wise Prototype Generator (CPG), the Task-Specific Feature Generator (TSFG), and the Scene Prototype Aggregator (SPA).
+        CPG groups class categories into foreground and background groups and generates group-wise prototypes. The foreground and background prototypes are assigned to the 3D object detection task and the map segmentation task, respectively, while both are assigned to the 3D occupancy prediction task. TSFG leverages these prototype groups to retain task-relevant features while suppressing irrelevant features, thereby enhancing the performance for each task. SPA enhances the prototype groups assigned for 3D occupancy prediction by utilizing the information produced by the 3D object detection head and the map segmentation head. Extensive experiments on the nuScenes and Occ3D benchmarks demonstrate that MAESTRO consistently outperforms existing methods across 3D object detection, BEV map segmentation, and 3D occupancy prediction tasks.
       </p>
     </section>
 
@@ -145,7 +179,7 @@
 
     <!-- Examples -->
     <section id="gallery">
-      <h2>Examples</h2>
+      <h2>Qualitative Results</h2>
       <div class="grid">
         <figure class="card">
           <img src="github_images/main_viz.png" alt="Example 1" />
@@ -154,14 +188,108 @@
       </div>
     </section>
 
-    <!-- Qualitative Results (Swiper) -->
-    <section id="Qualitative-Results">
-      <h2>Qualitative Results</h2>
+    <section id="results">
+      <h2>Quantitative Results</h2>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Venue</th>
+            <th>Image Backbone</th>
+            <th>Image Size</th>
+            <th>mAP</th>
+            <th>NDS</th>
+            <th>mIoU (Map)</th>
+            <th>mIoU (Occ)</th>
+            <th>Latency (ms)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BEVDet</td><td>arXiv'21</td><td>ResNet-50</td><td>256×704</td><td>29.8</td><td>37.9</td><td>-</td><td>-</td><td>51.5</td>
+          </tr>
+          <tr>
+            <td>DETR3D</td><td>CoRL'22</td><td>ResNet-50</td><td>800×1333</td><td>30.3</td><td>37.4</td><td>-</td><td>-</td><td>-</td>
+          </tr>
+          <tr>
+            <td>BEVDepth *</td><td>AAAI'23</td><td>ResNet-50</td><td>256×704</td><td>33.7</td><td>41.4</td><td>-</td><td>-</td><td>-</td>
+          </tr>
+          <tr>
+            <td>BEVFormer v2</td><td>CVPR'23</td><td>ResNet-50</td><td>640×1600</td><td>35.1</td><td>41.4</td><td>-</td><td>-</td><td>171.9</td>
+          </tr>
+          <tr>
+            <td>DualBEV †</td><td>ECCV'24</td><td>ResNet-50</td><td>256×704</td><td>35.2</td><td>42.5</td><td>-</td><td>-</td><td>65.1</td>
+          </tr>
+          <tr>
+            <td>CVT</td><td>CVPR'22</td><td>ResNet-50</td><td>256×704</td><td>-</td><td>-</td><td>37.7</td><td>-</td><td>33.9</td>
+          </tr>
+          <tr>
+            <td>LSS</td><td>ECCV'20</td><td>ResNet-50</td><td>256×704</td><td>-</td><td>-</td><td>41.0</td><td>-</td><td>72.4</td>
+          </tr>
+          <tr>
+            <td>BEVFusion</td><td>ICRA'23</td><td>ResNet-50</td><td>256×704</td><td>-</td><td>-</td><td>47.1</td><td>-</td><td>45.6</td>
+          </tr>
+          <tr>
+            <td>DifFUSER</td><td>ECCV'24</td><td>ResNet-50</td><td>256×704</td><td>-</td><td>-</td><td>48.3</td><td>-</td><td>92.2</td>
+          </tr>
+          <tr>
+            <td>MonoScene</td><td>CVPR'22</td><td>ResNet-101</td><td>928×1600</td><td>-</td><td>-</td><td>-</td><td>6.1</td><td>830.1</td>
+          </tr>
+          <tr>
+            <td>OccFormer</td><td>ICCV'23</td><td>ResNet-50</td><td>928×1600</td><td>-</td><td>-</td><td>-</td><td>21.9</td><td>349.0</td>
+          </tr>
+          <tr>
+            <td>TPVFormer</td><td>CVPR'23</td><td>ResNet-101</td><td>928×1600</td><td>-</td><td>-</td><td>-</td><td>27.8</td><td>320.8</td>
+          </tr>
+          <tr>
+            <td>Vampire</td><td>AAAI'24</td><td>ResNet-101</td><td>256×704</td><td>-</td><td>-</td><td>-</td><td>28.3</td><td>349.2</td>
+          </tr>
+          <tr>
+            <td>CTF-Occ</td><td>NeurIPS'24</td><td>ResNet-101</td><td>928×1600</td><td>-</td><td>-</td><td>-</td><td>28.5</td><td>-</td>
+          </tr>
+          <tr>
+            <td>SurroundOcc</td><td>ICCV'23</td><td>ResNet-101</td><td>800×1333</td><td>-</td><td>-</td><td>-</td><td>34.6</td><td>355.6</td>
+          </tr>
+          <tr>
+            <td>FB-Occ</td><td>ICCV'23</td><td>ResNet-50</td><td>256×704</td><td>-</td><td>-</td><td>-</td><td>37.4</td><td>129.7</td>
+          </tr>
+          <tr>
+            <td>BEVFusion</td><td>ICRA'23</td><td>ResNet-50</td><td>256×704</td><td>33.6</td><td>39.2</td><td>44.0</td><td>-</td><td>-</td>
+          </tr>
+          <tr>
+            <td>PanoOcc</td><td>CVPR'24</td><td>ResNet-50</td><td>864×1600</td><td>29.5</td><td>34.8</td><td>-</td><td>31.8</td><td>124.7</td>
+          </tr>
+          <tr class="highlight">
+            <td>Baseline-STL</td><td>-</td><td>ResNet-50</td><td>256×704</td><td>33.8</td><td>41.7</td><td>47.5</td><td>36.5</td><td>405.9</td>
+          </tr>
+          <tr class="highlight">
+            <td>Baseline-MTL</td><td>-</td><td>ResNet-50</td><td>256×704</td><td>32.7</td><td>38.2</td><td>43.5</td><td>36.0</td><td>219.6</td>
+          </tr>
+          <tr class="highlight">
+            <td>Ours-MTL</td><td>-</td><td>ResNet-50</td><td>256×704</td>
+            <td><strong>36.4</strong></td>
+            <td><strong>43.2</strong></td>
+            <td><strong>51.3</strong></td>
+            <td><strong>38.6</strong></td>
+            <td>250.3</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="caption">
+        <strong>Table 1.</strong> Performance comparison evaluated on the nuScenes validation set.  
+        “–” indicates tasks not supported by the method. All BEV map segmentation and MTL results were reproduced using official code with ResNet-50 backbone. “*” denotes the performance reported by DualBEV. † indicates the method using CBGS for training. Our MTL approach achieves state-of-the-art performance across all tasks.
+      </p>
+    </section>
+
+
+    <!-- Extended Qualitative Results (Swiper) -->
+    <section id="Additional Qualitative Results">
+      <h2>Additional Qualitative Results</h2>
       <div class="swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="github_images/supply_1.png" /></div>
           <div class="swiper-slide"><img src="github_images/weather_v1_1.png" /></div>
           <div class="swiper-slide"><img src="github_images/weather_v1_2.png" /></div>
+          <div class="swiper-slide"><img src="github_images/supply_1.png" /></div>
         </div>
         <!-- 네비게이션 버튼 -->
         <div class="swiper-button-next"></div>
