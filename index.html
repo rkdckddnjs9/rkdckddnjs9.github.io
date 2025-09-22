@@ -133,14 +133,41 @@
       </div>
     </section>
 
-    <section id="Qualitative Results">
-      <h2>Semantic Map Examples</h2>
+<!--     <section id="Qualitative Results">
+      <h2>Qualitative Results</h2>
       <div style="display:flex; overflow-x:auto; gap:10px; scroll-snap-type:x mandatory;">
         <img src="github_images/supply_1.png" style="flex:0 0 auto; width:400px; scroll-snap-align:center;" />
         <img src="github_images/weather_v1_1.png" style="flex:0 0 auto; width:400px; scroll-snap-align:center;" />
         <img src="github_images/weather_v1_2.png" style="flex:0 0 auto; width:400px; scroll-snap-align:center;" />
       </div>
+    </section> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    
+    <section id="Qualitative Results">
+      <h2>Qualitative Results</h2>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="github_images/supply_1.png" /></div>
+          <div class="swiper-slide"><img src="github_images/weather_v1_1.png" /></div>
+          <div class="swiper-slide"><img src="github_images/weather_v1_2.png" /></div>
+        </div>
+        <!-- 네비게이션 버튼 -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
     </section>
+    
+    <script>
+      const swiper = new Swiper('.swiper', {
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      });
+    </script>
 
     <!-- Citation -->
     <section id="bibtex">
