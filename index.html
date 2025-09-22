@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PROJECT NAME — Dataset / Paper</title>
+  <meta name="description" content="One‑page academic project site with teaser, paper/code/data buttons, video, and gallery." />
+  <style>
+    :root { --accent:#0a84ff; --text:#111; --muted:#666; --bg:#fff; --chip:#f5f7fb; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{padding:24px 0 12px}
+    h1{font-size:clamp(24px,3.5vw,40px);margin:0 0 8px;line-height:1.2}
+    .authors{display:flex;flex-wrap:wrap;gap:8px 16px;color:var(--muted);font-size:15px}
+    .affil{color:var(--muted);font-size:14px;margin-top:6px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px}
+    .chip{background:var(--chip);border:1px solid #e6ebf5;border-radius:999px;padding:8px 14px;font-weight:600;display:inline-flex;gap:8px;align-items:center}
+    .chip svg{width:16px;height:16px}
+    .teaser{margin:18px 0;border:1px solid #eee;border-radius:12px;overflow:hidden}
+    .teaser img, .teaser iframe{width:100%;display:block}
+    h2{margin:26px 0 10px;font-size:22px}
+    p{margin:10px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .card{border:1px solid #eee;border-radius:12px;overflow:hidden;background:#fff}
+    .card img{width:100%;height:160px;object-fit:cover;display:block}
+    .card .cap{padding:10px 12px;font-size:14px;color:var(--muted)}
+    pre{background:#0f172a;color:#e5e7eb;padding:14px;border-radius:10px;overflow:auto}
+    footer{color:var(--muted);font-size:14px;margin:28px 0 8px}
+    .btns{display:flex;flex-wrap:wrap;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid #e6ebf5;background:#fff;font-weight:600}
+    .btn:hover{background:#f8fafc}
+    .license{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>PROJECT NAME: A Short, Informative Tagline</h1>
+      <div class="authors">
+        <span>First Author*</span><span>Second Author*</span><span>Third Author</span><span>Changwon Kang</span>
+      </div>
+      <div class="affil">Your Lab / University • City, Country</div>
+      <div class="chips">
+        <a class="chip" href="#paper">📄 Paper</a>
+        <a class="chip" href="#code">💻 Code</a>
+        <a class="chip" href="#data">🗃️ Dataset</a>
+        <a class="chip" href="#video">▶️ Video</a>
+        <a class="chip" href="#bibtex">🔖 BibTeX</a>
+      </div>
+    </header>
+
+    <section class="teaser" id="video">
+      <!-- Replace with an image or YouTube iframe -->
+      <img src="static/teaser.jpg" alt="Teaser image placeholder" />
+      <!-- Example YouTube embed:
+      <iframe width="100%" height="480" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+      -->
+    </section>
+
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>
+        Concise 4–6 sentence summary of the problem, method/dataset, and key results. Mention what is new and why it matters.
+      </p>
+    </section>
+
+    <section id="links">
+      <h2>Resources</h2>
+      <div class="btns">
+        <a class="btn" id="paper" href="#">📄 Paper (arXiv/OpenReview)</a>
+        <a class="btn" id="code" href="#">💻 Code (GitHub)</a>
+        <a class="btn" id="data" href="#">🗃️ Download Dataset</a>
+        <a class="btn" href="#">📊 Leaderboard / Results</a>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>Examples</h2>
+      <div class="grid">
+        <figure class="card">
+          <img src="static/example_01.jpg" alt="Example 1" />
+          <figcaption class="cap">Scene 1 caption</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="static/example_02.jpg" alt="Example 2" />
+          <figcaption class="cap">Scene 2 caption</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="static/example_03.jpg" alt="Example 3" />
+          <figcaption class="cap">Scene 3 caption</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="bibtex">
+      <h2>Citation</h2>
+      <pre>@inproceedings{yourkey2025project,
+  title={PROJECT NAME},
+  author={First, A. and Second, B. and Third, C. and Kang, C.},
+  booktitle={ICCV},
+  year={2025}
+}</pre>
+    </section>
+
+    <section id="license">
+      <h2>License & Credits</h2>
+      <p class="license">
+        This page’s HTML/CSS scaffold is adapted from an open academic project template (Nerfies‑style). If you re‑use this, keep attribution in the footer and remove any analytics snippets you do not intend to use.
+      </p>
+    </section>
+
+    <footer>
+      <div>
+        © 2025 Your Lab • CC BY‑SA for the website content. Replace or customize as needed.
+      </div>
+      <div>
+        Built with a minimal static page; deploy via GitHub Pages or any static host.
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
