@@ -109,7 +109,7 @@
       </div>
     </header>
 
-    <!-- Teaser -->
+<!--     <!-- Teaser -->
     <section id="teaser">
       <figure style="text-align:center; margin:24px 0;">
         <img src="github_images/mtl_comparison_v9.png" 
@@ -119,7 +119,7 @@
           <strong>Figure 1.</strong> Comparison of Single-Task and Multi-Task 3D Perception Frameworks. (a) Single-task method: Each task utilizes a dedicated backbone and task-specific features, ensuring task specialization at the expense of high computational cost. (b) Existing multi-task method: A shared backbone improves computational efficiency but lacks task-specific feature representation. (c) Proposed method: Task-specific features are generated from shared backbone features, achieving both efficiency and task-aware feature learning.
         </figcaption>
       </figure>
-    </section>
+    </section> -->
 
     <!-- Abstract -->
     <section id="abstract">
@@ -142,6 +142,11 @@
           <strong>Figure 2.</strong> Overall architecture of the proposed MAESTRO framework with CPG, TSFG, and SPA modules.
         </figcaption>
       </figure>
+
+      <h2>Overview</h2>
+      <p>
+        Multi-view images are processed by a shared backbone to generate a structured 3D voxel representation. The CPG generates foreground and background prototype groups, which guide the TSFG in refining task-relevant features for 3D object detection, BEV map segmentation, and 3D occupancy prediction. Task-oriented prototypes derived from the 3D object detection and BEV map segmentation heads are then integrated with the prototype groups via the SPA, forming Scene Prototypes. These Scene prototypes are subsequently processed by the occupancy decoder to produce the final 3D occupancy predictions.
+      </p>
     </section>
 
     <!-- Examples -->
@@ -160,8 +165,7 @@
       <div class="grid">
         <figure class="card">
           <img src="github_images/main_table.png" alt="Example 1" />
-          <figcaption class="cap">Performance comparison evaluated on the nuScenes validation set.
-``-" indicates tasks not supported by the method. All BEV map segmentation and MTL results were reproduced using official code with ResNet-50 backbone. ``*" denotes the performance reported by DualBEV \cite{dual-bev}. $\dagger$ indicates the method using CBGS for training. Our MTL approach achieves state-of-the-art performance across all tasks.</figcaption>
+          <figcaption class="cap">Performance comparison evaluated on the nuScenes validation set. ``-" indicates tasks not supported by the method. All BEV map segmentation and MTL results were reproduced using official code with ResNet-50 backbone. ``*" denotes the performance reported by DualBEV. † indicates the method using CBGS for training. Our MTL approach achieves state-of-the-art performance across all tasks.</figcaption>
         </figure>
       </div>
     </section>
@@ -175,6 +179,7 @@
           <div class="swiper-slide"><img src="github_images/weather_v1_1.png" /></div>
           <div class="swiper-slide"><img src="github_images/weather_v1_2.png" /></div>
           <div class="swiper-slide"><img src="github_images/supply_1.png" /></div>
+          <div class="swiper-slide"><img src="github_images/Supply_BEVSeg_Comparison_v2.png" /></div>
         </div>
         <!-- 네비게이션 버튼 -->
         <div class="swiper-button-next"></div>
