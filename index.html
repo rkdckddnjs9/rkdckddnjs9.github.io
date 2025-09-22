@@ -64,6 +64,26 @@
       text-align:center;
     }
 
+    /* Swiper 슬라이드 통일 */
+    .swiper {
+      width: 100%;
+      max-width: 900px;  /* 필요하면 슬라이드 최대 폭 제한 */
+      margin: 0 auto;
+    }
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 400px;      /* 슬라이드 높이 고정 */
+      background: #fff;
+    }
+    .swiper-slide img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain; /* 비율 유지 */
+      display: block;
+    }
+
     pre{background:#0f172a;color:#e5e7eb;padding:14px;border-radius:10px;overflow:auto}
     footer{color:var(--muted);font-size:14px;margin:28px 0 8px}
     .btns{display:flex;flex-wrap:wrap;gap:10px}
@@ -71,6 +91,8 @@
     .btn:hover{background:#f8fafc}
     .license{font-size:13px;color:var(--muted)}
   </style>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
 <body>
   <div class="wrap">
@@ -106,7 +128,6 @@
         The goal of multi-task learning is to learn to conduct multiple tasks simultaneously based on a shared data representation. While this approach can improve learning efficiency, it may also cause performance degradation due to task conflicts that arise when optimizing the model for different objectives.
         To address this challenge, we introduce MAESTRO, a structured framework designed to generate task-specific features and mitigate feature interference in multi-task 3D perception, including 3D object detection, bird's-eye view (BEV) map segmentation, and 3D occupancy prediction.
         MAESTRO comprises three components: the Class-wise Prototype Generator (CPG), the Task-Specific Feature Generator (TSFG), and the Scene Prototype Aggregator (SPA).
-        CPG groups class categories into foreground and background groups and generates group-wise prototypes. The foreground and background prototypes are assigned to the 3D object detection task and the map segmentation task, respectively, while both are assigned to the 3D occupancy prediction task. TSFG leverages these prototype groups to retain task-relevant features while suppressing irrelevant features, thereby enhancing the performance for each task. SPA enhances the prototype groups assigned for 3D occupancy prediction by utilizing the information produced by the 3D object detection head and the map segmentation head. Extensive experiments on the nuScenes and Occ3D benchmarks demonstrate that MAESTRO consistently outperforms existing methods across 3D object detection, BEV map segmentation, and 3D occupancy prediction tasks.
       </p>
     </section>
 
@@ -128,24 +149,13 @@
       <div class="grid">
         <figure class="card">
           <img src="github_images/main_viz.png" alt="Example 1" />
-          <figcaption class="cap">Scene 1 caption</figcaption>
+          <figcaption class="cap">Qualitative results on the nuScenes validation set. From left to right, we show Ground Truth, Baseline-MTL, and our MAESTRO.</figcaption>
         </figure>
       </div>
     </section>
 
-<!--     <section id="Qualitative Results">
-      <h2>Qualitative Results</h2>
-      <div style="display:flex; overflow-x:auto; gap:10px; scroll-snap-type:x mandatory;">
-        <img src="github_images/supply_1.png" style="flex:0 0 auto; width:400px; scroll-snap-align:center;" />
-        <img src="github_images/weather_v1_1.png" style="flex:0 0 auto; width:400px; scroll-snap-align:center;" />
-        <img src="github_images/weather_v1_2.png" style="flex:0 0 auto; width:400px; scroll-snap-align:center;" />
-      </div>
-    </section> -->
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    
-    <section id="Qualitative Results">
+    <!-- Qualitative Results (Swiper) -->
+    <section id="Qualitative-Results">
       <h2>Qualitative Results</h2>
       <div class="swiper">
         <div class="swiper-wrapper">
@@ -158,7 +168,9 @@
         <div class="swiper-button-prev"></div>
       </div>
     </section>
-    
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
       const swiper = new Swiper('.swiper', {
         loop: true,
